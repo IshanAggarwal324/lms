@@ -16,8 +16,12 @@ const app = express()
 await connectDB()
 await connectCloudinary()
 
-// Middlewares
-app.use(cors())
+app.use(cors({
+  origin: "https://lms-nu-lemon.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(clerkMiddleware())
 
 // Routes
